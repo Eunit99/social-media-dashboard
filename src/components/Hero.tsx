@@ -1,6 +1,6 @@
 import styles from "@/styles";
 import Image from "next/image";
-import { DiscountIcon } from './icons/Icons'
+import { DiscountIcon } from '../icons/Icons'
 
 
 

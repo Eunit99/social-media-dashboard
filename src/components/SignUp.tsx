@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { AuthLayout } from './layouts/Layout'
-import { DASHBOARD, SIGN_IN, SIGN_UP } from './routes'
+import { DASHBOARD, SIGN_IN, SIGN_UP } from '../routes'
 import Link from 'next/link'
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router'
 import { Sentry } from "react-activity";
+import { API_URL, storageItems } from '@/constants';
 
 
 
@@ -28,17 +29,17 @@ export default function SignUp() {
 
 
   const router = useRouter()
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
-  const [fetching, setFetching] = useState(false);
-  const [isLogged, setIsLogged] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const [email, setEmail] = useState<string>("");;
+  const [password, setPassword] = useState<string>("");;
+  const [name, setName] = useState<string>("");;
+  const [fetching, setFetching] = useState<boolean>(false);;
+  const [isLogged, setIsLogged] = useState<boolean>(false);;
+  const [loading, setLoading] = useState<boolean>(true);;
 
 
 
   useEffect(() => {
-    const authState = window.localStorage.getItem("@test:auth");
+    const authState = window.localStorage.getItem(storageItems.auth);
     if (authState) {
       const { isLogged } = JSON.parse(authState);
       if (isLogged) setIsLogged(true);
@@ -76,7 +77,7 @@ export default function SignUp() {
     // After validation make login Request
     else {
       setFetching(true);
-      fetch("http://www.mocky.io/v3/08c2d38c-1959-427f-924c-23110af5ba2b", {
+      fetch(API_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -95,12 +96,10 @@ export default function SignUp() {
         })
         .then((data) => {
           setFetching(false);
-          window.localStorage.setItem(
-            "@test:auth",
-            JSON.stringify({ isLogged: true })
-          );
-          setIsLogged(true);
+          toast.success("Sign Up Successful");
+
           router.push(SIGN_IN)
+
 
         })
         .catch((error) => {

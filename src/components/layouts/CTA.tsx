@@ -1,6 +1,6 @@
 import styles from "@/styles";
 import Link from "next/link";
-import { SIGN_IN } from "../routes";
+import { SIGN_IN } from "../../routes";
 
 
 

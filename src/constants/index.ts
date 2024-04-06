@@ -1,6 +1,10 @@
-import { IFooterLinks, INavLinks, ISocialMedia } from "@/types";
-import { HOME, SIGN_IN } from "../routes";
+import { HOME, SIGN_IN } from "@/routes";
+import { IFooterLinks, INavLinks, ISocialMedia, IStorageItems } from "@/types";
 
+export const API_URL: string = "https://run.mocky.io/v3/7d805b00-6ec4-4b13-be89-054270619674";
+export const USERS_API_URL: string = "https://jsonplaceholder.typicode.com/users";
+export const POSTS_API_URL: string = "https://jsonplaceholder.typicode.com/posts";
+const APP_NAME: string= "Eunit";
 
 
 const instagram = '/icons/instagram.svg';
@@ -120,3 +124,10 @@ export const socialMedia: ISocialMedia = [
     link: "https://www.linkedin.com/in/eunit99",
   },
 ];
+
+
+
+export const storageItems: IStorageItems = {
+  userData: `@${APP_NAME}:userData`,
+  auth: `@${APP_NAME}:auth`,
+};

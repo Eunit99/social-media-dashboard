@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { navLinks } from "../constants";
-import { HOME } from "../routes";
+import { navLinks } from "../../constants";
+import { HOME } from "../../routes";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "@/styles";
@@ -11,7 +11,7 @@ import styles from "@/styles";
 
 const Navbar = () => {
   const [active, setActive] = useState(HOME);
-  const [toggle, setToggle] = useState(false);
+  const [toggle, setToggle] = useState<boolean>(false);;
 
   return (
     <div className={`${styles.paddingX} ${styles.flexCenter}`}>

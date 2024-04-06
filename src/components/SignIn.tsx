@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { GoogleIcon } from './icons/Icons'
-import { DASHBOARD, SIGN_UP } from './routes'
+import { DASHBOARD, SIGN_UP } from '../routes'
 import { AuthLayout } from './layouts/Layout'
 import Link from 'next/link'
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router'
 import { Sentry } from "react-activity";
+import { GoogleIcon } from '@/icons/Icons';
+import { API_URL, storageItems } from '@/constants';
 
 
 
@@ -13,15 +14,15 @@ export default function SignIn() {
 
 
   const router = useRouter()
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [fetching, setFetching] = useState(false);
-  const [isLogged, setIsLogged] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const [email, setEmail] = useState<string>("");;
+  const [password, setPassword] = useState<string>("");;
+  const [fetching, setFetching] = useState<boolean>(false);
+  const [isLogged, setIsLogged] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
 
 
   useEffect(() => {
-    const authState = window.localStorage.getItem("@test:auth");
+    const authState = window.localStorage.getItem(storageItems.auth);
     if (authState) {
       const { isLogged } = JSON.parse(authState);
       if (isLogged) setIsLogged(true);
@@ -51,7 +52,7 @@ export default function SignIn() {
     // After validation make login Request
     else {
       setFetching(true);
-      fetch("http://www.mocky.io/v3/08c2d38c-1959-427f-924c-23110af5ba2b", {
+      fetch(API_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -70,10 +71,19 @@ export default function SignIn() {
         })
         .then((data) => {
           setFetching(false);
+
+          toast.success("Login Successful");
+
           window.localStorage.setItem(
-            "@test:auth",
+            storageItems.auth,
             JSON.stringify({ isLogged: true })
           );
+
+          window.localStorage.setItem(
+            storageItems.userData,
+            JSON.stringify(data)
+          );
+
           setIsLogged(true);
           router.push(DASHBOARD)
 
@@ -127,7 +137,7 @@ export default function SignIn() {
 
           <hr className="my-6 border-gray-300 w-full" />
 
-          <button disabled={fetching}  onClick={handleLogin} type="button" className="w-full block bg-white hover:bg-white-300 text-gray-700 focus:bg-white-300 font-semibold rounded-lg px-4 py-3 border border-gray-300">
+          <button disabled={fetching} onClick={handleLogin} type="button" className="w-full block bg-white hover:bg-white-300 text-gray-700 focus:bg-white-300 font-semibold rounded-lg px-4 py-3 border border-gray-300">
             <div className="flex items-center justify-center">
 
               {/* Google Icon */}

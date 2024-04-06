@@ -1,5 +1,5 @@
 import styles from "@/styles";
-import { footerLinks, socialMedia } from "../constants";
+import { footerLinks, socialMedia } from "../../constants";
 import Image from "next/image";
 import CTA from "./CTA";
 
