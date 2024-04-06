@@ -1,4 +1,4 @@
-import { HOME, SIGN_IN } from "@/routes";
+import { HOME, SIGN_IN, DASHBOARD, SIGN_UP } from "@/routes";
 import { IFooterLinks, INavLinks, ISocialMedia, IStorageItems } from "@/types";
 
 export const API_URL: string = "https://run.mocky.io/v3/7d805b00-6ec4-4b13-be89-054270619674";
@@ -20,12 +20,12 @@ export const navLinks: INavLinks = [
     title: "Home",
   },
   {
-    id: "about",
-    title: "About",
+    id: DASHBOARD,
+    title: "Dashboard",
   },
   {
-    id: "contact",
-    title: "Contact",
+    id: SIGN_UP,
+    title: "Sign Up",
   },
 
   {

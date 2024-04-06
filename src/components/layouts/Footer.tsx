@@ -21,7 +21,7 @@ const Footer = () => (
               Eunit
             </p>
             <p className={`${styles.paragraph} mt-4 max-w-[312px]`}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus scelerisque convallis mauris, at cursus
+               Create a small social media web dashboard using Next.js that allows users to view and interact with posts and comments. 
             </p>
           </div>
 

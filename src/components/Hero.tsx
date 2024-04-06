@@ -34,7 +34,7 @@ const Hero = () => {
           Dashboards.
         </h1>
         <p className={`${styles.paragraph} max-w-[470px] mt-5`}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus scelerisque convallis mauris, at cursus nisi sodales a. Vivamus sed leo nisi. Integer ac nibh purus. Nullam sapien nisi, mattis si
+          Create a small social media web dashboard using Next.js that allows users to view and interact with posts and comments. 
         </p>
       </div>
 
