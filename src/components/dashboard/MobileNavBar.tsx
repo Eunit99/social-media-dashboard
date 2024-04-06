@@ -13,7 +13,7 @@ import { useAuthState, useUserDetails } from "@/helpers/useHelpers";
 
 export const MobileNavBar = () => {
 
-  const userData = useUserDetails();
+  const { userData } = useUserDetails();
 
   const {
     isLogged
@@ -73,7 +73,7 @@ export const MobileNavBar = () => {
           </Link>
         </li>
         <li>
-          <Link href={`${PROFILE}/${userData?.userData?.username}`} className="flex py-4 gap-3 px-3 cursor-pointer hover:bg-slate-200 rounded-[15rem] active:bg-slate-100">
+          <Link href={`${PROFILE}/${userData?.userData?.username ?? ""}`} className="flex py-4 gap-3 px-3 cursor-pointer hover:bg-slate-200 rounded-[15rem] active:bg-slate-100">
             {
               isLogged ? (
                 <>

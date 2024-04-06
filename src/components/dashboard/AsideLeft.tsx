@@ -19,7 +19,7 @@ import { useRouter } from 'next/router';
 export default function AsideLeft() {
 
 
-  const userData = useUserDetails();
+  const { userData } = useUserDetails();
 
 
   const pathname = usePathname();
